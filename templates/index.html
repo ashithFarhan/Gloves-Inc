@@ -1,131 +1,77 @@
-
-<!doctype html>
-<html lang="en" class="h-100">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Glove Inc.</title>
-
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
-
-    
-
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <!-- Favicons -->
-
-<link rel="icon" href="{{url_for('static', filename='logo.png')}}">
-<meta name="theme-color" content="#7952b3">
-
-
-    <style>
-
-        body{
-            font-family: 'Montserrat', sans-serif;
-        }
-
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
- 
-        .btn-secondary,
-        .btn-secondary:hover,
-        .btn-secondary:focus {
-        color: #333;
-        text-shadow: none; /* Prevent inheritance from `body` */
-        }
-
-
-        body {
-        text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
-        box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-        }
-
-        .cover-container {
-        width: 100vw;
-        height: 100vh;
-        }
-
-        .nav-masthead .nav-link {
-        padding: .25rem 0;
-        font-weight: 700;
-        color: rgba(255, 255, 255, .5);
-        background-color: transparent;
-        border-bottom: .25rem solid transparent;
-        }
-
-        .nav-masthead .nav-link:hover,
-        .nav-masthead .nav-link:focus {
-        border-bottom-color: rgba(255, 255, 255, .25);
-        }
-
-        .nav-masthead .nav-link + .nav-link {
-        margin-left: 1rem;
-        }
-
-        .nav-masthead .active {
-        color: #fff;
-        border-bottom-color: #fff;
-        }
-    </style>
-
-    
-    </head>
-  <body class="d-flex h-100 text-center text-white bg-dark">
-    
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="mb-auto">
-    <div>
-      <h3 class="float-md-start mb-0">Glove Inc.</h3>
-      <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">Features</a>
-        <a class="nav-link" href="#">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="px-3">
-    <h1 class="fw-bold">Glove Inc.</h1>
-    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-    <p class="lead">
-      <a href="#content" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Get Started</a>
-    </p>
-  </main>
-
-
-
-
-  <footer class="mt-auto text-white-50">
-    <p>© 2022 Glove Inc. All rights reserved.</p>
-  </footer>
+{% extends 'base.html' %} {% block title %}{% endblock title %} {% block content
+%}
+<div
+  class="alert text-center mb-0 text-white bg-secondary"
+  style="font-size: 0.5rem"
+>
+  Free Shipping On All Orders Above $40
 </div>
+<div class="h-100 text-center text-white bg-dark">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <main class="px-3">
+      <!-- <h1 class="fw-bold">Gloves Inc.</h1>
+      <p class="lead">
+        Cover is a one-page template for building simple and beautiful home
+        pages. Download, edit the text, and add your own fullscreen background
+        photo to make it your own.
+      </p> -->
 
-<div id="content">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, massa ac efficitur lobortis, felis neque facilisis nisi, at efficitur urna nisl sit amet risus. Pellentesque et vestibulum urna. Fusce feugiat, ante vel suscipit vulputate, ante sem placerat est, malesuada auctor elit purus non tellus. Vestibulum sagittis purus scelerisque turpis egestas, finibus facilisis lacus efficitur. Donec at neque massa. Pellentesque convallis, lorem eu consectetur sodales, lorem orci faucibus dolor, at accumsan sapien augue vel diam. Curabitur tempor, lacus in egestas pharetra, velit dolor scelerisque turpis, nec egestas dolor urna ac felis. Sed et consequat velit, quis porta orci. Maecenas accumsan porta nisi non tempor.
+      <p class="lead">
+        <img
+          class="img-fluid"
+          src="{{ url_for('static', filename='ad.jpg') }}"
+        />
+        <br /><br />
+        <a
+          href="{{url_for('profile', model='model')}}"
+          class="btn btn-md btn-secondary fw-bold border-white bg-white text-dark"
+          >Design Now</a
+        >
+      </p>
+    </main>
 
-    Suspendisse potenti. Maecenas facilisis eros eu tellus ultrices rhoncus. Aliquam erat volutpat. Mauris interdum ut ex a malesuada. Praesent non nisl elit. Cras egestas elementum velit, et pulvinar augue. Suspendisse ullamcorper enim et vehicula placerat. Nulla maximus enim vel quam luctus, non hendrerit enim accumsan. Integer faucibus nisl ipsum, vel fermentum tortor eleifend nec. Quisque rhoncus placerat est, vel pharetra ipsum varius non. Donec suscipit mollis sodales.
-    
-    Proin ultricies suscipit mauris id suscipit. Maecenas in elit sed lacus dapibus aliquet vel ac quam. Quisque porttitor diam sed augue placerat, vel viverra nibh rhoncus. Nullam non turpis pretium eros euismod sodales sed sed diam. Suspendisse pellentesque placerat quam, sit amet fermentum est tincidunt sed. Nunc ac dui pharetra, scelerisque lorem eget, tempor mauris. Suspendisse vulputate, metus nec mattis tempor, est tellus malesuada aug
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <img
+            src="{{ url_for('static', filename='bracer.png') }}"
+            class="card-img-top"
+            alt="..."
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img
+            src="{{ url_for('static', filename='ruffman.png') }}"
+            class="card-img-top"
+            alt="..."
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img
+            src="{{ url_for('static', filename='superflex.png') }}"
+            class="card-img-top"
+            alt="..."
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img
+            src="{{ url_for('static', filename='dexter.png') }}"
+            class="card-img-top"
+            alt="..."
+          />
+        </div>
+      </div>
+    </div>
+
+    <footer class="mt-auto text-white-50">
+      <p>© 2022 Gloves Inc. All rights reserved.</p>
+    </footer>
   </div>
-
-
-    
-  </body>
-</html>
+</div>
+{% endblock content %}
