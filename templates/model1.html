@@ -90,15 +90,6 @@
         <div class="col"><img height="70px" src="{{url_for('static', filename='logo2.png')}}" id="logo2" onclick="changeLogoL('2')"></div>
         <div class="col"><img height="60px" src="{{url_for('static', filename='logo3.png')}}" id="logo3" onclick="changeLogoL('3')"></div>
       </div></container>
-      <!-- <img height="10px" src="{{url_for('static', filename='logo1.png')}}"> -->
-
-      <!-- <select " id="l_logoSelect"2
-        <option selected>Select logo</option>
-        <option value="1">QQQ<img height="10px" src="{{url_for('static', filename='logo1.png')}}"></option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select> -->
-
       <div class="h6 fw-bold ">Adjust Logo Position</div>
       <div class="container border border-success border-3 rounded-pill">
           <div class="row" ><div class="text-center center-block h2" onclick="lGloveLogo.position.z-=0.25"><a style="cursor: pointer;">▲</a>
@@ -112,20 +103,6 @@
       </div>
     </div>
 
-    <!-- <div class="directional-buttons">
-      <button class="direction-button up" onclick="lGloveLogo.position.z-=0.25">
-        <span class="visually-hidden">up</span>
-      </button>
-      <button class="direction-button left" onclick="lGloveLogo.position.x-=0.25">
-        <span class="visually-hidden">left</span>
-      </button>
-      <button class="direction-button right" onclick="lGloveLogo.position.x +=0.25">
-        <span class="visually-hidden">right</span>
-      </button>
-      <button class="direction-button down" onclick="lGloveLogo.position.z+=0.25">
-        <span class="visually-hidden">down</span>
-      </button>
-    </div> -->
     </div>
     <div class="col-6 mt-4">
 
@@ -153,6 +130,29 @@
             <div class="row"><div class="text-center center-block h2" onclick="rGlove.position.z+=0.25"><a style="cursor: pointer;">▼</a></div></div>
         </div>
       </div>
+      <hr>
+
+      <div>
+  
+        <container>
+          <div class="h6 fw-bold">Select logo</div>
+          <div class="row">
+          <div class="col"><img width="60px" src="{{url_for('static', filename='logo1.png')}}" id="Rlogo1" onclick="changeLogoR('1')"></div>
+          <div class="col"><img height="70px" src="{{url_for('static', filename='logo2.png')}}" id="Rlogo2" onclick="changeLogoR('2')"></div>
+          <div class="col"><img height="60px" src="{{url_for('static', filename='logo3.png')}}" id="Rlogo3" onclick="changeLogoR('3')"></div>
+        </div></container>
+        <div class="h6 fw-bold ">Adjust Logo Position</div>
+        <div class="container border border-success border-3 rounded-pill">
+            <div class="row" ><div class="text-center center-block h2" onclick="rGloveLogo.position.z-=0.25"><a style="cursor: pointer;">▲</a>
+            </div></div>
+            <div class="row">
+              <div class="col"><div  class="text-center center-block h2" onclick="rGloveLogo.position.x-=0.25"><a style="cursor: pointer;" >◀</a></div></div>
+              <div class="col"><div class="text-center center-block h2">⚪</div></div>
+              <div class="col"><div class="text-center center-block h2" onclick="rGloveLogo.position.x +=0.25"><a style="cursor: pointer;">▶</a></div></div>
+            </div>
+            <div class="row"><div class="text-center center-block h2" onclick="rGloveLogo.position.z+=0.25"><a style="cursor: pointer;">▼</a></div></div>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -172,11 +172,11 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Final Render</h5>
+          <h5 class="modal-title fw-bold" id="exampleModalLabel">Final Render</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <model-viewer id="mv" alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum" 
+          <model-viewer id="mv"  
           src="{{url_for('static', filename='uploads/newGlove.glb')}}"ar ar-modes="webxr scene-viewer quick-look" 
           skybox-image="{{url_for('static', filename='spruit_sunrise_2k.hdr')}}"
            seamless-poster shadow-intensity="0" camera-controls>
@@ -185,6 +185,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
           <button type="button" class="btn btn-outline-success">Add to Cart</button>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=75x75&data=http://10.82.157.194:5000/view_model">
         </div>
       </div>
     </div>
@@ -500,11 +501,6 @@
       {
         var texture = new THREE.TextureLoader().load( "{{url_for('static', filename='logo1.png')}}");
 
-        // var w = Math.round(texture.image.width/1000);
-        // var h= Math.round(texture.image.height/1000);
-
-        // console.log(w,h);
-
         var planeGeometry = new THREE.PlaneGeometry(3,3, 1, 1);
         var planeMaterial = new THREE.MeshLambertMaterial( { map: texture } );
         planeMaterial.transparent = true
@@ -513,33 +509,25 @@
         plane.position.set(-10,7,-5);
         plane.rotation.x = -Math.PI/2;
         window.lGloveLogo = plane;
-        // plane.receiveShadow = true;
-        // var direction = new THREE.Euler( 0, 0,0);
-        // const geometry =  new THREE.DecalGeometry( plane, new THREE.Vector3(0,0,0), direction, new THREE.Vector3(16,16,16) );
-        // // const material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
-        // const mesh = new THREE.Mesh( geometry );
+
         scene.add( plane );
 
+      }
 
-    //     var geometry = new THREE.SphereGeometry( 5, 12, 8 );
-    
-    // // material
-    // var material = new THREE.MeshPhongMaterial( {
-    //     color: 0x00ffff, 
-    //     flatShading: true
-    // } );
-    
-    // // mesh
-    // let mesh = new THREE.Mesh( geometry, material );
-    // // scene.add( mesh );
-    // let decalMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, depthWrite: false, polygonOffset: true, polygonOffsetFactor: - 4, } );
+  
+      {
+        var texture = new THREE.TextureLoader().load( "{{url_for('static', filename='logo2.png')}}");
 
-		// 	var size = new THREE.Vector3( 5,5,5);
-			
-		// 	var decalGeometry = new THREE.DecalGeometry( mesh, new THREE.Vector3(3,3,2), new THREE.Euler( 0, 0,0), size );
-						
-		// 	var decal = new THREE.Mesh( decalGeometry, decalMaterial );
-		// 	scene.add( decal );
+        var planeGeometry = new THREE.PlaneGeometry(3,3, 1, 1);
+        var planeMaterial = new THREE.MeshLambertMaterial( { map: texture } );
+        planeMaterial.transparent = true
+        //var planeMaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
+        var plane = new THREE.Mesh(planeGeometry, planeMaterial);
+        plane.position.set(10,7,-5);
+        plane.rotation.x = -Math.PI/2;
+        window.rGloveLogo = plane;
+
+        scene.add( plane );
 
       }
 
@@ -773,6 +761,34 @@
       }
       window.changeLogoL = changeLogoL;
 
+
+
+
+
+
+      function changeLogoR(id){
+        
+        document.getElementById('Rlogo1').classList.remove('selected')
+        document.getElementById('Rlogo2').classList.remove('selected')
+        document.getElementById('Rlogo3').classList.remove('selected')
+
+        document.getElementById('Rlogo' + id).classList.add('selected')
+
+        var texture = new THREE.TextureLoader().load( "/static/logo"+id+".png");
+
+        var planeGeometry = new THREE.PlaneGeometry(3,3, 1, 1);
+        var planeMaterial = new THREE.MeshLambertMaterial( { map: texture } );
+        planeMaterial.transparent = true
+        var plane = new THREE.Mesh(planeGeometry, planeMaterial);
+        plane.position.set(10,7,-5);
+        plane.rotation.x = -Math.PI/2;
+
+        scene.remove(window.rGloveLogo);
+        window.rGloveLogo = plane;
+        scene.add( plane );
+        
+      }
+      window.changeLogoR = changeLogoR;
 
       console.log('done');
       }

@@ -10,6 +10,10 @@ app.config['UPLOAD_FOLDER'] = '.\\static\\uploads'
 def index():
     return render_template('index.html')
 
+@app.route('/view_model')
+def view_model():
+    return render_template('mv.html')
+
 @app.route("/customize/<model>")
 def profile(model):
     return render_template('model1.html')
