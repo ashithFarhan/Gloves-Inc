@@ -32,43 +32,52 @@
 
     <div class="row row-cols-1 row-cols-md-4 g-4">
       <div class="col">
-        <div class="card h-100">
-          <img
-            src="{{ url_for('static', filename='bracer.png') }}"
-            class="card-img-top"
-            alt="..."
-          />
+        <div class="card h-100 zoom-parent">
+          <a href="{{url_for('profile', model='model')}}">
+            <img
+              src="{{ url_for('static', filename='bracer.png') }}"
+              class="card-img-top zoom child"
+              alt="..."
+            />
+          </a>
         </div>
       </div>
       <div class="col">
-        <div class="card h-100">
-          <img
-            src="{{ url_for('static', filename='ruffman.png') }}"
-            class="card-img-top"
-            alt="..."
-          />
+        <div class="card h-100 zoom-parent">
+          <a href="{{url_for('profile', model='model')}}">
+            <img
+              src="{{ url_for('static', filename='ruffman.png') }}"
+              class="card-img-top zoom child"
+              alt="..."
+            />
+          </a>
         </div>
       </div>
       <div class="col">
-        <div class="card h-100">
-          <img
-            src="{{ url_for('static', filename='superflex.png') }}"
-            class="card-img-top"
-            alt="..."
-          />
+        <div class="card h-100 zoom-parent">
+          <a href="{{url_for('profile', model='model')}}">
+            <img
+              src="{{ url_for('static', filename='superflex.png') }}"
+              class="card-img-top zoom child"
+              alt="..."
+            />
+          </a>
         </div>
       </div>
       <div class="col">
-        <div class="card h-100">
-          <img
-            src="{{ url_for('static', filename='dexter.png') }}"
-            class="card-img-top"
-            alt="..."
-          />
+        <div class="card h-100 zoom-parent">
+          <a href="{{url_for('profile', model='model')}}">
+            <img
+              src="{{ url_for('static', filename='dexter.png') }}"
+              class="card-img-top zoom child"
+              alt="..."
+            />
+          </a>
         </div>
       </div>
     </div>
 
+    <br /><br /><br />
     <footer class="mt-auto text-white-50">
       <p>© 2022 Gloves Inc. All rights reserved.</p>
     </footer>

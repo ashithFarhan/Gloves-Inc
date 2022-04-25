@@ -56,3 +56,26 @@ body {
   color: #fff;
   border-bottom-color: #fff;
 }
+
+.zoom-parent {
+  overflow: hidden;
+  height: 75vh;
+}
+
+.child {
+  height: 100%;
+  width: auto;
+  background-position: center;
+  background-size: cover;
+  background-image: url('https://lumiere-a.akamaihd.net/v1/images/eu_rld-1_v1_hero_r_c56b0a8e.jpeg?region=0,0,2000,835&width=1536');
+}
+
+.zoom {
+  overflow: hidden;
+  -webkit-transition: all 0.5s ease-in-out;
+}
+
+.zoom:hover {
+  transform: scale(1.06);
+  -webkit-transition: all 0.5s ease-in-out;
+}
