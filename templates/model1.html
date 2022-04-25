@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=UTF-8 />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5.0.2/dark.css">
+
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Gloves Inc.</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success text-white" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+  <div class="row text-center ">
+    <div class="col border-end border-success border-1 pe-5">
+      
+    <div class="h3 fw-bold mb-4">Customize Left Glove</div>
+   
+    <div>
+      <input type="text" class="form-control mb-2 fw-bold" id="textL" name="textL" maxlength="7" placeholder="GLOVE-L">
+      <button class="btn btn-outline-secondary fw-bold mb-2" type="button" id="button-addon2" onclick="changeL()">Change Left Glove Text</button>
+      <div class="h6 fw-bold">Adjust Text Position</div>
+      <div class="container border border-success border-3 rounded-pill">
+          <div class="row" ><div class="text-center center-block h2" onclick="lGlove.position.z-=0.25"><a style="cursor: pointer;">▲</a>
+          </div></div>
+          <div class="row">
+            <div class="col"><div  class="text-center center-block h2" onclick="lGlove.position.x-=0.25"><a style="cursor: pointer;" >◀</a></div></div>
+            <div class="col"><div class="text-center center-block h2">⚪</div></div>
+            <div class="col"><div class="text-center center-block h2" onclick="lGlove.position.x +=0.25"><a style="cursor: pointer;">▶</a></div></div>
+          </div>
+          <div class="row"><div class="text-center center-block h2" onclick="lGlove.position.z+=0.25"><a style="cursor: pointer;">▼</a></div></div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div>
+
+      <container>
+        <div class="h6 fw-bold">Select logo</div>
+        <div class="row">
+        <div class="col"><img width="60px" src="{{url_for('static', filename='logo1.png')}}" id="logo1" onclick="changeLogoL('1')"></div>
+        <div class="col"><img height="70px" src="{{url_for('static', filename='logo2.png')}}" id="logo2" onclick="changeLogoL('2')"></div>
+        <div class="col"><img height="60px" src="{{url_for('static', filename='logo3.png')}}" id="logo3" onclick="changeLogoL('3')"></div>
+      </div></container>
+      <!-- <img height="10px" src="{{url_for('static', filename='logo1.png')}}"> -->
+
+      <!-- <select " id="l_logoSelect"2
+        <option selected>Select logo</option>
+        <option value="1">QQQ<img height="10px" src="{{url_for('static', filename='logo1.png')}}"></option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select> -->
+
+      <div class="h6 fw-bold ">Adjust Logo Position</div>
+      <div class="container border border-success border-3 rounded-pill">
+          <div class="row" ><div class="text-center center-block h2" onclick="lGloveLogo.position.z-=0.25"><a style="cursor: pointer;">▲</a>
+          </div></div>
+          <div class="row">
+            <div class="col"><div  class="text-center center-block h2" onclick="lGloveLogo.position.x-=0.25"><a style="cursor: pointer;" >◀</a></div></div>
+            <div class="col"><div class="text-center center-block h2">⚪</div></div>
+            <div class="col"><div class="text-center center-block h2" onclick="lGloveLogo.position.x +=0.25"><a style="cursor: pointer;">▶</a></div></div>
+          </div>
+          <div class="row"><div class="text-center center-block h2" onclick="lGloveLogo.position.z+=0.25"><a style="cursor: pointer;">▼</a></div></div>
+      </div>
+    </div>
+
+    <!-- <div class="directional-buttons">
+      <button class="direction-button up" onclick="lGloveLogo.position.z-=0.25">
+        <span class="visually-hidden">up</span>
+      </button>
+      <button class="direction-button left" onclick="lGloveLogo.position.x-=0.25">
+        <span class="visually-hidden">left</span>
+      </button>
+      <button class="direction-button right" onclick="lGloveLogo.position.x +=0.25">
+        <span class="visually-hidden">right</span>
+      </button>
+      <button class="direction-button down" onclick="lGloveLogo.position.z+=0.25">
+        <span class="visually-hidden">down</span>
+      </button>
+    </div> -->
+    </div>
+    <div class="col-6 mt-4">
+
+
+      <canvas id="c" ></canvas>
+      <br>
+      <button class="btn btn-outline-success fw-bold mt-2 btn-lg" onclick="exportGLTF()">Export Model</button>
+      <button style="display: none;" id="modalbtn"  data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
+      <a id="dlbtn" style="display: none;">Download</a>
+    </div>
+    <div class="col border-start border-success border-1 ps-5">
+      <div class="h3 fw-bold">Customize Right Glove</div>
+      <div>
+        <input type="text" class="form-control mb-2 fw-bold" id="textR" name="textR" maxlength="7" placeholder="GLOVE-R">
+        <button class="btn btn-outline-secondary fw-bold mb-2" type="button" id="button-addon3" onclick="changeR()">Change Right Glove Text</button>
+        <div class="h6 fw-bold">Adjust Text Position</div>
+        <div class="container border border-success border-3 rounded-pill">
+            <div class="row" ><div class="text-center center-block h2" onclick="rGlove.position.z-=0.25"><a style="cursor: pointer;">▲</a>
+            </div></div>
+            <div class="row">
+              <div class="col"><div  class="text-center center-block h2" onclick="rGlove.position.x-=0.25"><a style="cursor: pointer;" >◀</a></div></div>
+              <div class="col"><div class="text-center center-block h2">⚪</div></div>
+              <div class="col"><div class="text-center center-block h2" onclick="rGlove.position.x +=0.25"><a style="cursor: pointer;">▶</a></div></div>
+            </div>
+            <div class="row"><div class="text-center center-block h2" onclick="rGlove.position.z+=0.25"><a style="cursor: pointer;">▼</a></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+  <br>
+  
+  <br>
+  <br>
+
+  <br>
+   <!-- Import the component -->
+   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Final Render</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <model-viewer id="mv" alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum" 
+          src="{{url_for('static', filename='uploads/newGlove.glb')}}"ar ar-modes="webxr scene-viewer quick-look" 
+          skybox-image="{{url_for('static', filename='spruit_sunrise_2k.hdr')}}"
+           seamless-poster shadow-intensity="0" camera-controls>
+          </model-viewer>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-outline-success">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <script src="https://r105.threejsfundamentals.org/threejs/resources/threejs/r105/three.min.js"></script>
+  <script
+    src="https://r105.threejsfundamentals.org/threejs/resources/threejs/r105/js/controls/OrbitControls.js"></script>
+  <script
+    src="https://r105.threejsfundamentals.org/threejs/resources/threejs/r105/js/loaders/LoaderSupport.js"></script>
+  <script src="https://r105.threejsfundamentals.org/threejs/resources/threejs/r105/js/loaders/OBJLoader2.js"></script>
+  <script src="https://r105.threejsfundamentals.org/threejs/resources/threejs/r105/js/loaders/MTLLoader.js"></script>
+  <script src="https://r105.threejsfundamentals.org/threejs/resources/threejs/r105/js/exporters/GLTFExporter.js"></script>
+  <script src="https:/cdn.rawgit.com/mrdoob/three.js/dev/examples/js/geometries/TextGeometry.js "></script>
+  <script src="https://r105.threejsfundamentals.org/threejs/resources/threejs/r105/js/geometries/DecalGeometry.js"></script>
+
+  <script src="https:/cdn.rawgit.com/mrdoob/three.js/dev/examples/js/loaders/FontLoader.js "></script>
+
+
+
+  <!-- "https://cdn.skypack.dev/three@0.133/examples/jsm/geometries/TextGeometry.js -->
+  <!-- <script src='https://cdn.skypack.dev/three-mesh-ui'></script> -->
+
+
+
+
+  <script type="module">
+
+    'use strict';
+
+    /* global THREE */
+
+    function main() {
+      const canvas = document.querySelector('#c');
+      const renderer = new THREE.WebGLRenderer({ canvas });
+
+      let called = false;
+
+      const fov = 45;
+      const aspect = 2;  // the canvas default
+      const near = 0.1;
+      const far = 1000;
+      const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+      camera.position.set(15, 35, 30);
+
+      const controls = new THREE.OrbitControls(camera, canvas);
+      controls.target.set(5, 15, 5);
+      controls.update();
+
+      const scene = new THREE.Scene();
+      window.scene = scene;
+      scene.background = new THREE.Color("rgb(220, 220, 220)");
+
+      function saveArrayBuffer( buffer, filename ) {
+
+        save( new Blob( [ buffer ], { type: 'application/octet-stream' } ), filename );
+
+    }
+
+      function downloadJSON(json, filename) {
+
+        saveString(JSON.stringify(json), filename);
+
+      }
+
+      var link = document.getElementById('dlbtn');
+      // link.style.display = 'none';
+      document.body.appendChild(link); // Firefox workaround, see #6594
+
+      function save(blob, filename) {
+
+        console.log('blob', blob);
+
+        link.innerHTML="Download";
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+
+        var form = new FormData();
+        form.append('fname', 'newGlove.glb')
+        form.append('data', blob);
+        
+
+        async function postData(url = '', data = {}) {
+        // Default options are marked with *
+        const response = await fetch(url, {
+          method: 'POST', // *GET, POST, PUT, DELETE, etc.
+          mode: 'no-cors', // no-cors, *cors, same-origin
+ 
+          body: data // body data type must match "Content-Type" header
+        });
+        return response; // parses JSON response into native JavaScript objects
+      }
+
+      postData('http://localhost:5000/saveGLB', form)
+        .then(data => {
+          console.log(data); // JSON data parsed by `data.json()` call
+          document.getElementById("mv").src = "/static/uploads/newGlove.glb?t=" + new Date().getTime() 
+          // $.get("/customize/model1 #modal-body", function(data) {
+          // $("#modal-body").replaceWith(data);
+          // });
+
+          Swal.fire({
+            title: 'Rendering Complete!',
+            text: 'Click OK to continue',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          }).then((result)=>{
+            document.getElementById("modalbtn").click();
+          }) 
+        });
+
+         // link.click();
+
+        // URL.revokeObjectURL( url ); breaks Firefox...
+
+      }
+
+      function saveString(text, filename) {
+
+        save(new Blob([text], { type: 'text/plain' }), filename);
+
+      }
+
+      // {
+      //   const planeSize = 40;
+
+      //   const loader = new THREE.TextureLoader();
+      //   const texture = loader.load('https://r105.threejsfundamentals.org/threejs/resources/images/checker.png');
+      //   texture.wrapS = THREE.RepeatWrapping;
+      //   texture.wrapT = THREE.RepeatWrapping;
+      //   texture.magFilter = THREE.NearestFilter;
+      //   const repeats = planeSize / 2;
+      //   texture.repeat.set(repeats, repeats);
+
+      //   const planeGeo = new THREE.PlaneBufferGeometry(planeSize, planeSize);
+      //   const planeMat = new THREE.MeshPhongMaterial({
+      //     map: texture,
+      //     side: THREE.DoubleSide,
+      //   });
+      //   const mesh = new THREE.Mesh(planeGeo, planeMat);
+      //   mesh.rotation.x = Math.PI * -.5;
+      //   scene.add(mesh);
+      // }
+
+      {
+        const skyColor = 0xB1E1FF;  // light blue
+        const groundColor = 0xFFFFFF;  // brownish orange
+        const intensity = 1;
+        const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
+        scene.add(light);
+      }
+
+      {
+        const color = 0xFFFFFF;
+        const intensity = 0.75;
+        const light = new THREE.DirectionalLight(color, intensity);
+        light.position.set(0, 10, 0);
+        light.target.position.set(15, 0, 0);
+        scene.add(light);
+        scene.add(light.target);
+
+        const tt = new THREE.AmbientLight(0x404040); // soft white light
+        scene.add(tt);
+      }
+
+      {
+        const objLoader = new THREE.OBJLoader2();
+        objLoader.loadMtl("{{url_for('static', filename='glove.mtl')}}", null, (materials) => {
+          objLoader.setMaterials(materials);
+          // texture = new THREE.TextureLoader().load('protective_gear_color.jpg');
+
+          // lambert = new THREE.MeshLambertMaterial({color: 0xffffff, map: new THREE.TextureLoader().load('protective_gear_color.jpg')});
+          objLoader.load("{{url_for('static', filename='glove.obj')}}", (event) => {
+            //     object.traverse( function (child) {
+            //       if (child instanceof THREE.Mesh){
+            //     child.material = new THREE.MeshLambertMaterial({color: 0xffffff, map: new THREE.TextureLoader().load('protective_gear_color.jpg')});
+            // }
+            //     } );
+            const root = event.detail.loaderRootNode;
+            console.log(event);
+            root.rotation.x = Math.PI
+            // root.rotation.x = Math.PI/2;
+            // root.rotation.z = Math.PI;
+
+            root.position.set(0,0,0);
+            scene.add(root);
+          },
+          function ( xhr ) {
+
+          console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+          },
+          function ( error ) {
+
+          console.log( 'An error happened loading obj' );
+
+          }
+
+          );
+        },
+        function ( xhr ) {
+
+          console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+          },
+          function ( error ) {
+
+          console.log( 'An error happened loading mtl' );
+
+          }
+        
+        );
+      }
+
+      {
+        const floader = new THREE.FontLoader();
+        const font = floader.load(
+          // resource URL
+          "{{url_for('static', filename='helvetiker_bold.typeface.json')}}",
+
+          // onLoad callback
+          function (font) {
+            // do something with the font
+            console.log(font);
+
+            // var textL = document.getElementById("textL").value
+
+            // console.log('textL', textL);
+
+            var geometry = new THREE.TextGeometry('GLOVE-L', {
+              font: font,
+              size: 1,
+              height: 0.25,
+              curveSegments: 6,
+              bevelEnabled: false,
+              bevelThickness: 10,
+              bevelSize: 8,
+              bevelOffset: 0,
+              bevelSegments: 5
+            });
+            var textMaterial = new THREE.MeshPhongMaterial(
+              { color: 0xffffff, specular: 0x111111 }
+            );
+            var mesh = new THREE.Mesh(geometry, textMaterial);
+            mesh.rotation.x = -Math.PI / 2;
+            mesh.position.set(-13, 6.5, -2);
+            // mesh.position.set(-7, 11, -2);
+            window.lGlove =mesh;
+
+
+            scene.add(mesh);
+          },
+
+          // onError callback
+          function (err) {
+            console.log('Error loading L text');
+          }
+        );
+
+      }
+
+      {
+        const floader = new THREE.FontLoader();
+        const font = floader.load(
+          // resource URL
+          "{{url_for('static', filename='helvetiker_bold.typeface.json')}}",
+
+          // onLoad callback
+          function (font) {
+            // do something with the font
+            console.log(font);
+            var geometry = new THREE.TextGeometry('GLOVE-R', {
+              font: font,
+              size: 1,
+              height: 0.25,
+              curveSegments: 6,
+              bevelEnabled: false,
+              bevelThickness: 10,
+              bevelSize: 8,
+              bevelOffset: 0,
+              bevelSegments: 5
+            });
+            var textMaterial = new THREE.MeshPhongMaterial(
+              { color: 0xffffff, specular: 0x111111 }
+            );
+            var mesh = new THREE.Mesh(geometry, textMaterial);
+            mesh.rotation.x = -Math.PI / 2;
+            mesh.position.set(6.5, 6.5, -2);
+
+            window.rGlove = mesh;
+
+            scene.add(mesh);
+
+            
+
+
+          },
+
+          // onError callback
+          function (err) {
+            console.log('Error loading R text');
+          }
+        );
+
+      }
+
+      {
+        var texture = new THREE.TextureLoader().load( "{{url_for('static', filename='logo1.png')}}");
+
+        // var w = Math.round(texture.image.width/1000);
+        // var h= Math.round(texture.image.height/1000);
+
+        // console.log(w,h);
+
+        var planeGeometry = new THREE.PlaneGeometry(3,3, 1, 1);
+        var planeMaterial = new THREE.MeshLambertMaterial( { map: texture } );
+        planeMaterial.transparent = true
+        //var planeMaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
+        var plane = new THREE.Mesh(planeGeometry, planeMaterial);
+        plane.position.set(-10,7,-5);
+        plane.rotation.x = -Math.PI/2;
+        window.lGloveLogo = plane;
+        // plane.receiveShadow = true;
+        // var direction = new THREE.Euler( 0, 0,0);
+        // const geometry =  new THREE.DecalGeometry( plane, new THREE.Vector3(0,0,0), direction, new THREE.Vector3(16,16,16) );
+        // // const material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+        // const mesh = new THREE.Mesh( geometry );
+        scene.add( plane );
+
+
+    //     var geometry = new THREE.SphereGeometry( 5, 12, 8 );
+    
+    // // material
+    // var material = new THREE.MeshPhongMaterial( {
+    //     color: 0x00ffff, 
+    //     flatShading: true
+    // } );
+    
+    // // mesh
+    // let mesh = new THREE.Mesh( geometry, material );
+    // // scene.add( mesh );
+    // let decalMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, depthWrite: false, polygonOffset: true, polygonOffsetFactor: - 4, } );
+
+		// 	var size = new THREE.Vector3( 5,5,5);
+			
+		// 	var decalGeometry = new THREE.DecalGeometry( mesh, new THREE.Vector3(3,3,2), new THREE.Euler( 0, 0,0), size );
+						
+		// 	var decal = new THREE.Mesh( decalGeometry, decalMaterial );
+		// 	scene.add( decal );
+
+      }
+
+      function resizeRendererToDisplaySize(renderer) {
+        const canvas = renderer.domElement;
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+        const needResize = canvas.width !== width || canvas.height !== height;
+        if (needResize) {
+          renderer.setSize(width, height, false);
+        }
+        return needResize;
+      }
+
+      function render() {
+
+        if (resizeRendererToDisplaySize(renderer)) {
+          const canvas = renderer.domElement;
+          camera.aspect = canvas.clientWidth / canvas.clientHeight;
+          camera.updateProjectionMatrix();
+        }
+
+
+        renderer.render(scene, camera);
+
+      //   if(called == false) {
+
+      //     called = true;
+
+      //   var exporter = new THREE.GLTFExporter();
+      // exporter.parse(
+      //   scene,
+      //   // called when the gltf has been generated
+      //   function (gltf) {
+
+      //     console.log('gltf',scene);
+      //     console.log(gltf);
+          
+      //     // downloadJSON( gltf );
+      //     saveArrayBuffer( gltf, 'scene.glb' );
+
+      //   },
+      //   {binary: true},
+      //   // called when there is an error in the generation
+      //   function (error) {
+
+      //     console.log('Error exporting to GLTF');
+
+      //   });
+      //   }
+
+
+
+        requestAnimationFrame(render);
+
+        
+      }
+
+      requestAnimationFrame(render);
+
+
+      // var exporter = new THREE.GLTFExporter();
+      // exporter.parse(
+      //   scene,
+      //   // called when the gltf has been generated
+      //   function (gltf) {
+
+      //     console.log('gltf',scene);
+      //     console.log(gltf);
+      //     // downloadJSON( gltf );
+      //     saveArrayBuffer( gltf, 'scene.glb' );
+
+      //   },
+      //   {binary: true},
+      //   // called when there is an error in the generation
+      //   function (error) {
+
+      //     console.log('An error happened');
+
+      //   });
+
+      function exportGLTF()
+      {
+        var exporter = new THREE.GLTFExporter();
+      exporter.parse(
+        scene,
+        // called when the gltf has been generated
+        function (gltf) {
+
+          console.log('gltf',scene);
+          console.log(gltf);
+          
+          // downloadJSON( gltf );
+          saveArrayBuffer( gltf, 'scene.glb' );
+
+        },
+        {binary: true},
+        // called when there is an error in the generation
+        function (error) {
+
+          console.log('Error exporting to GLTF');
+
+        });
+      }
+
+      window.exportGLTF = exportGLTF;
+
+      function changeL()
+    {
+        const floader = new THREE.FontLoader();
+        const font = floader.load(
+          // resource URL
+          "{{url_for('static', filename='helvetiker_bold.typeface.json')}}",
+
+          // onLoad callback
+          function (font) {
+            // do something with the font
+            console.log(font);
+
+            var textL = document.getElementById("textL").value
+
+            // console.log('textL', textL);
+
+            var geometry = new THREE.TextGeometry(textL, {
+              font: font,
+              size: 1,
+              height: 0.25,
+              curveSegments: 6,
+              bevelEnabled: false,
+              bevelThickness: 10,
+              bevelSize: 8,
+              bevelOffset: 0,
+              bevelSegments: 5
+            });
+            var textMaterial = new THREE.MeshPhongMaterial(
+              { color: 0xffffff, specular: 0x111111 }
+            );
+            var mesh = new THREE.Mesh(geometry, textMaterial);
+            mesh.rotation.x = -Math.PI / 2;
+            mesh.position.set(-13, 6.5, -2);
+            // mesh.position.set(-7, 11, -2);
+
+            scene.remove(window.lGlove);
+            window.lGlove = mesh;
+            scene.add(mesh);
+          },
+
+          // onError callback
+          function (err) {
+            console.log(err, 'Error loading L text');
+          }
+        );
+
+      }
+
+      window.changeL = changeL;
+
+
+      function changeR()
+      {
+        const floader = new THREE.FontLoader();
+        const font = floader.load(
+          // resource URL
+          "{{url_for('static', filename='helvetiker_bold.typeface.json')}}",
+
+          // onLoad callback
+          function (font) {
+            // do something with the font
+            console.log(font);
+            var textR = document.getElementById("textR").value
+            var geometry = new THREE.TextGeometry(textR, {
+              font: font,
+              size: 1,
+              height: 0.25,
+              curveSegments: 6,
+              bevelEnabled: false,
+              bevelThickness: 10,
+              bevelSize: 8,
+              bevelOffset: 0,
+              bevelSegments: 5
+            });
+            var textMaterial = new THREE.MeshPhongMaterial(
+              { color: 0xffffff, specular: 0x111111 }
+            );
+            var mesh = new THREE.Mesh(geometry, textMaterial);
+            mesh.rotation.x = -Math.PI / 2;
+            mesh.position.set(6.5, 6.5, -2);
+
+
+            scene.remove(window.rGlove);
+            window.rGlove = mesh;
+            scene.add(mesh);
+
+            
+
+
+          },
+
+          // onError callback
+          function (err) {
+            console.log('Error loading R text');
+          }
+        );
+
+      }
+      
+      window.changeR = changeR;
+
+
+      function changeLogoL(id){
+        
+        document.getElementById('logo1').classList.remove('selected')
+        document.getElementById('logo2').classList.remove('selected')
+        document.getElementById('logo3').classList.remove('selected')
+
+        document.getElementById('logo' + id).classList.add('selected')
+
+        var texture = new THREE.TextureLoader().load( "/static/logo"+id+".png");
+
+        var planeGeometry = new THREE.PlaneGeometry(3,3, 1, 1);
+        var planeMaterial = new THREE.MeshLambertMaterial( { map: texture } );
+        planeMaterial.transparent = true
+        var plane = new THREE.Mesh(planeGeometry, planeMaterial);
+        plane.position.set(-10,7,-5);
+        plane.rotation.x = -Math.PI/2;
+
+        scene.remove(window.lGloveLogo);
+        window.lGloveLogo = plane;
+        scene.add( plane );
+        
+      }
+      window.changeLogoL = changeLogoL;
+
+
+      console.log('done');
+      }
+
+
+
+    
+
+
+    main();
+
+
+
+
+
+  </script>
+
+
+
+
+
+ 
+
+
+  </script>
+
+  <!-- <button onclick="exportGLTF()">DOWNLOAD</button> -->
+
+
+</body>
+
+</html>
